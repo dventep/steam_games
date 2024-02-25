@@ -1,0 +1,13 @@
+importlib
+ipykernel
+matplotlib
+numpy
+pandas
+pip
+pip-audit
+pre-commit
+psycopg2-binary
+pyarrow
+pylint
+sqlalchemy
+sqlalchemy-utils

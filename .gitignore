@@ -1,0 +1,14 @@
+# virtual environment
+venv
+
+# File with PostgreSQL credentials data
+code/config/credentials.ini
+
+# data files
+data/*
+
+# Logs file
+code/log/workshop001.log
+
+# Byte-compiled / optimized / DLL files
+__pycache__
