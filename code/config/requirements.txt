@@ -11,3 +11,4 @@ pyarrow
 pylint
 sqlalchemy
 sqlalchemy-utils
+fastparquet

@@ -9,16 +9,16 @@ from sqlalchemy_utils import database_exists
 from sqlalchemy.orm import sessionmaker
 import importlib.util
 
-spec = importlib.util.spec_from_file_location("sql_classes", "../code/models/sql_classes.py")
+spec = importlib.util.spec_from_file_location("sql_classes", "../code/database_models/sql_classes.py")
 sql_classes = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(sql_classes)
 
 # ? Logger basic settings
 logging.basicConfig(
     level=logging.DEBUG,
-    filename="../code/log/workshop001.log",
+    filename="../code/log/executing.log",
     encoding="utf-8",
-    format="%(asctime)s - %(levelname)s - %(message)s",
+    format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
 
@@ -26,7 +26,6 @@ class ConnectionPostgres:
     """Create connection with PostgreSQL"""
 
     PARSER = ConfigParser()
-    # Connection data for PostgreSQL
     CREDENTIALS_FILENAME = "../code/config/credentials.ini"
     DATABASE_SECTION = "postgresql"
 
@@ -62,8 +61,8 @@ class ConnectionPostgres:
                 List of dictionaries with records of the specified table.        
         """
 
-        raw_applicant_table = self.get_modules()[table_name]
-        records = self.session.query(raw_applicant_table).all()
+        raw_games_table = self.get_modules()[table_name]
+        records = self.session.query(raw_games_table).all()
         return [record.__dict__ for record in records]
 
     def get_modules(self) -> dict:
@@ -73,7 +72,7 @@ class ConnectionPostgres:
                 Dictionary with classes structure of every table in the database
         """
 
-        self.modules = {"RawApplicant": sql_classes.RawApplicant, "Applicant": sql_classes.Applicant}
+        self.modules = {"RawGames": sql_classes.RawGames}
         return self.modules
 
     def data_to_connection(self) -> None:
