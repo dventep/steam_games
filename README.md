@@ -73,3 +73,4 @@ In this part, we will look the process to go from a dataset named [steam-games-d
 
 
 # Credits
+@GersonYF, @dventep and @Davele12
