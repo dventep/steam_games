@@ -1,3 +1,4 @@
+""" This module contains functions to perform exploratory data analysis (EDA) on a dataset. The functions are used to """
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -6,6 +7,7 @@ from wordcloud import WordCloud
 
 
 def get_color(value, high_threshold = 95, low_threshold = 40):
+    """Get color based on value and thresholds"""
     if value > high_threshold:
         return 'red'
     if value > low_threshold:
@@ -15,6 +17,7 @@ def get_color(value, high_threshold = 95, low_threshold = 40):
 
 
 def plot_counts(value_counts, high_threshold, low_threshold):
+    """ Plot the counts of each column in the dataset """
     sorted_counts = value_counts.sort_values(ascending=False)
 
     plt.figure(figsize=(10, 6))
@@ -34,6 +37,7 @@ def plot_counts(value_counts, high_threshold, low_threshold):
 
 
 def plot_null_counts(df, high_threshold, low_threshold):
+    """ Plot the null counts of each column in the dataset """
     null_counts = df.isnull().sum()
     null_counts = null_counts[null_counts > 0]
     null_percentages = null_counts / df.shape[0] * 100
@@ -56,6 +60,7 @@ def plot_null_counts(df, high_threshold, low_threshold):
 
 
 def plot_with_capped_limit(df, column, quantiles, ylabel, plot_type='box'):
+    """ Plot the distribution of a column with capped values at certain quantiles """
     if plot_type not in ['box', 'hist']:
         raise ValueError('plot_type should be one of "box" or "hist"')
 
@@ -97,6 +102,7 @@ def plot_with_capped_limit(df, column, quantiles, ylabel, plot_type='box'):
 
 
 def plot_stacked_bar_from_combinations(df, columns):
+    """ Plot a stacked bar chart of value counts for combinations of columns """
     value_counts = df[columns].value_counts()
     counts_df = value_counts.reset_index()
     counts_df.columns = columns + ['Count']
@@ -123,6 +129,7 @@ def plot_stacked_bar_from_combinations(df, columns):
 
 
 def generate_text_cloud(df, column):
+    """ Generate a string to be used to generate a word cloud """
     si = StringIO()
     df[column].apply(lambda x: si.write(str(x)))
     string_cloud = si.getvalue()
@@ -132,6 +139,7 @@ def generate_text_cloud(df, column):
 
 
 def plot_word_cloud(df, column):
+    """ Plot a word cloud of the text in a column """
     text_cloud = generate_text_cloud(df, column)
 
     wordcloud = WordCloud(

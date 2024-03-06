@@ -1,6 +1,6 @@
 """ This module is to establish connection with PostgreSQL's database """
 
-# Import libraries
+# Import libraries 
 import logging
 from configparser import ConfigParser
 from sqlalchemy import create_engine
@@ -72,7 +72,7 @@ class ConnectionPostgres:
                 Dictionary with classes structure of every table in the database
         """
 
-        self.modules = {"RawGames": sql_classes.RawGames}
+        self.modules = {"RawGames": sql_classes.RawGames, "CleanGames": sql_classes.CleanGames}
         return self.modules
 
     def data_to_connection(self) -> None:

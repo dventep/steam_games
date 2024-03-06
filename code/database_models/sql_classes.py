@@ -1,6 +1,6 @@
 """ This module is to declarative the SQL classes for the database """
 
-from sqlalchemy import Column, Integer, Date, VARCHAR
+from sqlalchemy import Column, Integer, TIMESTAMP, VARCHAR, Double, BOOLEAN
 from sqlalchemy.orm import declarative_base
 
 BASE = declarative_base()
@@ -48,3 +48,32 @@ class RawGames(BASE):
 
     def __str__(self) -> str:
         return f"Raw {self.name} - {self.release_date}"
+
+class CleanGames(BASE):
+    """This class is to create the table clean_games in the database. This table is to store the initial data to start a robust structure."""
+
+    __tablename__ = "clean_games"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(VARCHAR(200), nullable=True, default=None)
+    release_date = Column(TIMESTAMP)
+    peak_ccu = Column(Integer, default=0)
+    required_age = Column(Integer, nullable=True, default=None)
+    price = Column(Double, nullable=True, default=None)
+    downloable_content_count = Column(Integer, default=0)
+    supported_languages = Column(VARCHAR(1500), nullable=True, default=None)
+    full_audio_languages = Column(VARCHAR(1500), nullable=True, default=None)
+    achievements = Column(Integer, default=0)
+    developers = Column(VARCHAR(800), nullable=True, default=None)
+    publishers = Column(VARCHAR(800), nullable=True, default=None)
+    categories = Column(VARCHAR(500), nullable=True, default=None)
+    genres = Column(VARCHAR(500), nullable=True, default=None)
+    windows_only = Column(BOOLEAN, default=False)
+    release_year = Column(Double)
+    average_playtime = Column(Double)
+    average_units_sold = Column(Double)
+    sentiment = Column(VARCHAR(20), nullable=True, default=None)
+    average_combined_score = Column(Double)
+
+    def __str__(self) -> str:
+        return f"{self.name} - {self.release_date.strftime('%Y-%m-%d')}"

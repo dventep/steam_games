@@ -3,6 +3,10 @@ ipykernel
 matplotlib
 numpy
 pandas
+seaborn
+scipy
+statsmodels
+wordcloud
 pip
 pip-audit
 pre-commit
