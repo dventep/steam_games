@@ -1,6 +1,6 @@
 """ This module is to declarative the SQL classes for the database """
 
-from sqlalchemy import Column, Integer, TIMESTAMP, VARCHAR, DOUBLE, BOOLEAN
+from sqlalchemy import Column, Integer, TIMESTAMP, VARCHAR, Double, BOOLEAN
 from sqlalchemy.orm import declarative_base
 
 BASE = declarative_base()
@@ -59,7 +59,7 @@ class CleanGames(BASE):
     release_date = Column(TIMESTAMP)
     peak_ccu = Column(Integer, default=0)
     required_age = Column(Integer, nullable=True, default=None)
-    price = Column(DOUBLE, nullable=True, default=None)
+    price = Column(Double, nullable=True, default=None)
     downloable_content_count = Column(Integer, default=0)
     supported_languages = Column(VARCHAR(1500), nullable=True, default=None)
     full_audio_languages = Column(VARCHAR(1500), nullable=True, default=None)
@@ -69,11 +69,11 @@ class CleanGames(BASE):
     categories = Column(VARCHAR(500), nullable=True, default=None)
     genres = Column(VARCHAR(500), nullable=True, default=None)
     windows_only = Column(BOOLEAN, default=False)
-    release_year = Column(DOUBLE)
-    average_playtime = Column(DOUBLE)
-    average_units_sold = Column(DOUBLE)
+    release_year = Column(Double)
+    average_playtime = Column(Double)
+    average_units_sold = Column(Double)
     sentiment = Column(VARCHAR(20), nullable=True, default=None)
-    average_combined_score = Column(DOUBLE)
+    average_combined_score = Column(Double)
 
     def __str__(self) -> str:
         return f"{self.name} - {self.release_date.strftime('%Y-%m-%d')}"
