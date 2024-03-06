@@ -54,7 +54,7 @@ This document outlines the first phase of the process that we carry out:
 - [GitHub 💼.](https://github.com/)
 - [Visual Studio Code 📝](https://code.visualstudio.com/)
 
-## Step by step
+## Installing
 
 In this part, we will look the process to go from a dataset named [steam-games-dataset] under the Hugging Face hosting to the storage of an initial structure in our database named [steam_games] shown in the diagrams below, to offer the latter to people.
 
@@ -67,7 +67,7 @@ In this part, we will look the process to go from a dataset named [steam-games-d
 - **Local server block**: There is a database in PostgreSQL called **steam_games** in the local server, this so far will have two tables, **raw_games a**nd **clean_games**.
             (If the database doesn't exist, **load_initial_data** notebook will create it and its structure.)
 
-2. connect_database. To connect the load_initial_data notebook with steam-games-dataset (parquet file hosting in Hugging Face), a class called ConnectionPostgres is created that through the SQLAlchemy library that is highly used by its ORM, that depending on the HOST and PORT configuration credentials, links to local PostgreSQL.
+2. connect_database. To connect the load_initial_data notebook with steam-games-dataset (parquet file hosting in Hugging Face), a class called ConnectionPostgres is created that through the SQLAlchemy library that is highly used by its ORM, that depending on the HOST and PORT configuration credentials file, links to local PostgreSQL. (The file must is locate from root folder in ./code/config/ with name credentials.ini.)
 
 3. **local_initial_data:** Once the connection has been made, the database and its structure is created by the class if it doesn’t exist, including **raw_games a**nd **clean_games** tables. When the proccess is executed, the tables will be reset if they already exists.
 
