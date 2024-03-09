@@ -71,6 +71,8 @@ In this part, we will look the process to go from a dataset named [steam-games-d
 
 3. **local_initial_data:** Once the connection has been made, the database and its structure is created by the class if it doesn’t exist, including **raw_games a**nd **clean_games** tables. When the proccess is executed, the tables will be reset if they already exists.
 
+## Dasboard
+https://app.powerbi.com/view?r=eyJrIjoiYjE0ODZlODctMjBkNy00NzNkLTkyYTQtZTdmNDA0NDM2MTM1IiwidCI6IjY5M2NiZWEwLTRlZjktNDI1NC04OTc3LTc2ZTA1Y2I1ZjU1NiIsImMiOjR9
 
 # Credits
 @GersonYF, @dventep and @Davele12
